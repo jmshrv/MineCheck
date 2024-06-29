@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MineCheckApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                ServerScreen()
+            }
+            .modelContainer(for: MinecraftServer.self)
         }
     }
 }

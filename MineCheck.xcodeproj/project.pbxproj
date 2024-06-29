@@ -8,18 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		1A1DE8DC2C2C98B30015D585 /* MineCheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8DB2C2C98B30015D585 /* MineCheckApp.swift */; };
-		1A1DE8DE2C2C98B30015D585 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8DD2C2C98B30015D585 /* ContentView.swift */; };
+		1A1DE8DE2C2C98B30015D585 /* ServerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8DD2C2C98B30015D585 /* ServerScreen.swift */; };
 		1A1DE8E02C2C98B40015D585 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A1DE8DF2C2C98B40015D585 /* Assets.xcassets */; };
 		1A1DE8E42C2C98B40015D585 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A1DE8E32C2C98B40015D585 /* Preview Assets.xcassets */; };
+		1A1DE8EC2C2EF9A60015D585 /* MinecraftPing in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1DE8EB2C2EF9A60015D585 /* MinecraftPing */; };
+		1A1DE8EF2C2EFAB20015D585 /* ServerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8EE2C2EFAB20015D585 /* ServerList.swift */; };
+		1A1DE8F12C2EFBAB0015D585 /* AddServerToolbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8F02C2EFBAB0015D585 /* AddServerToolbarItem.swift */; };
+		1A1DE8F32C2EFD530015D585 /* AddServerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8F22C2EFD530015D585 /* AddServerSheet.swift */; };
+		1A1DE8F62C2F006C0015D585 /* MinecraftServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8F52C2F006C0015D585 /* MinecraftServer.swift */; };
+		1A1DE8FB2C2F883E0015D585 /* ServerListTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8FA2C2F883E0015D585 /* ServerListTile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1A1DE8D82C2C98B30015D585 /* MineCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MineCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A1DE8DB2C2C98B30015D585 /* MineCheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCheckApp.swift; sourceTree = "<group>"; };
-		1A1DE8DD2C2C98B30015D585 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1A1DE8DD2C2C98B30015D585 /* ServerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerScreen.swift; sourceTree = "<group>"; };
 		1A1DE8DF2C2C98B40015D585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A1DE8E12C2C98B40015D585 /* MineCheck.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MineCheck.entitlements; sourceTree = "<group>"; };
 		1A1DE8E32C2C98B40015D585 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1A1DE8EE2C2EFAB20015D585 /* ServerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerList.swift; sourceTree = "<group>"; };
+		1A1DE8F02C2EFBAB0015D585 /* AddServerToolbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddServerToolbarItem.swift; sourceTree = "<group>"; };
+		1A1DE8F22C2EFD530015D585 /* AddServerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddServerSheet.swift; sourceTree = "<group>"; };
+		1A1DE8F52C2F006C0015D585 /* MinecraftServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinecraftServer.swift; sourceTree = "<group>"; };
+		1A1DE8FA2C2F883E0015D585 /* ServerListTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTile.swift; sourceTree = "<group>"; };
+		1A1DE8FC2C2F8ED10015D585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A1DE8EC2C2EF9A60015D585 /* MinecraftPing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,8 +65,10 @@
 		1A1DE8DA2C2C98B30015D585 /* MineCheck */ = {
 			isa = PBXGroup;
 			children = (
+				1A1DE8FC2C2F8ED10015D585 /* Info.plist */,
+				1A1DE8F42C2F005A0015D585 /* Models */,
+				1A1DE8ED2C2EFAA50015D585 /* Views */,
 				1A1DE8DB2C2C98B30015D585 /* MineCheckApp.swift */,
-				1A1DE8DD2C2C98B30015D585 /* ContentView.swift */,
 				1A1DE8DF2C2C98B40015D585 /* Assets.xcassets */,
 				1A1DE8E12C2C98B40015D585 /* MineCheck.entitlements */,
 				1A1DE8E22C2C98B40015D585 /* Preview Content */,
@@ -67,6 +82,26 @@
 				1A1DE8E32C2C98B40015D585 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1A1DE8ED2C2EFAA50015D585 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1A1DE8DD2C2C98B30015D585 /* ServerScreen.swift */,
+				1A1DE8EE2C2EFAB20015D585 /* ServerList.swift */,
+				1A1DE8F02C2EFBAB0015D585 /* AddServerToolbarItem.swift */,
+				1A1DE8F22C2EFD530015D585 /* AddServerSheet.swift */,
+				1A1DE8FA2C2F883E0015D585 /* ServerListTile.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1A1DE8F42C2F005A0015D585 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A1DE8F52C2F006C0015D585 /* MinecraftServer.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +120,9 @@
 			dependencies = (
 			);
 			name = MineCheck;
+			packageProductDependencies = (
+				1A1DE8EB2C2EF9A60015D585 /* MinecraftPing */,
+			);
 			productName = MineCheck;
 			productReference = 1A1DE8D82C2C98B30015D585 /* MineCheck.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +151,9 @@
 				Base,
 			);
 			mainGroup = 1A1DE8CF2C2C98B30015D585;
+			packageReferences = (
+				1A1DE8EA2C2EF9A60015D585 /* XCRemoteSwiftPackageReference "MinecraftPing" */,
+			);
 			productRefGroup = 1A1DE8D92C2C98B30015D585 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,8 +180,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A1DE8DE2C2C98B30015D585 /* ContentView.swift in Sources */,
+				1A1DE8FB2C2F883E0015D585 /* ServerListTile.swift in Sources */,
+				1A1DE8DE2C2C98B30015D585 /* ServerScreen.swift in Sources */,
 				1A1DE8DC2C2C98B30015D585 /* MineCheckApp.swift in Sources */,
+				1A1DE8EF2C2EFAB20015D585 /* ServerList.swift in Sources */,
+				1A1DE8F12C2EFBAB0015D585 /* AddServerToolbarItem.swift in Sources */,
+				1A1DE8F62C2F006C0015D585 /* MinecraftServer.swift in Sources */,
+				1A1DE8F32C2EFD530015D585 /* AddServerSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +245,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -254,7 +302,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -274,6 +324,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MineCheck/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -312,6 +363,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MineCheck/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -359,6 +411,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A1DE8EA2C2EF9A60015D585 /* XCRemoteSwiftPackageReference "MinecraftPing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jmshrv/MinecraftPing/";
+			requirement = {
+				kind = revision;
+				revision = d9d9aa6801ade71fe321be2765e922eaf365d0cc;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A1DE8EB2C2EF9A60015D585 /* MinecraftPing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A1DE8EA2C2EF9A60015D585 /* XCRemoteSwiftPackageReference "MinecraftPing" */;
+			productName = MinecraftPing;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1A1DE8D02C2C98B30015D585 /* Project object */;
 }

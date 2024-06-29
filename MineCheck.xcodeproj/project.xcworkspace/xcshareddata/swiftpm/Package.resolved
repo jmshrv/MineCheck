@@ -1,0 +1,14 @@
+{
+  "originHash" : "8052a8d5e141696c15ebc2e60217e4d60cfe3cf8b59d6cffff4b86968b276f56",
+  "pins" : [
+    {
+      "identity" : "minecraftping",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jmshrv/MinecraftPing/",
+      "state" : {
+        "revision" : "d9d9aa6801ade71fe321be2765e922eaf365d0cc"
+      }
+    }
+  ],
+  "version" : 3
+}
