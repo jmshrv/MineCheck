@@ -17,5 +17,6 @@ struct ServerList: View {
                 ServerListTile(server: server)
             }
         }
+        .refreshable {}
     }
 }

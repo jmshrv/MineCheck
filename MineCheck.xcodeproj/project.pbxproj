@@ -17,6 +17,7 @@
 		1A1DE8F32C2EFD530015D585 /* AddServerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8F22C2EFD530015D585 /* AddServerSheet.swift */; };
 		1A1DE8F62C2F006C0015D585 /* MinecraftServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8F52C2F006C0015D585 /* MinecraftServer.swift */; };
 		1A1DE8FB2C2F883E0015D585 /* ServerListTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8FA2C2F883E0015D585 /* ServerListTile.swift */; };
+		1A7B2B382C31F90D00A40FA6 /* ModelContainer+previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B2B372C31F90D00A40FA6 /* ModelContainer+previews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		1A1DE8F52C2F006C0015D585 /* MinecraftServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinecraftServer.swift; sourceTree = "<group>"; };
 		1A1DE8FA2C2F883E0015D585 /* ServerListTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTile.swift; sourceTree = "<group>"; };
 		1A1DE8FC2C2F8ED10015D585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1A7B2B372C31F90D00A40FA6 /* ModelContainer+previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelContainer+previews.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 		1A1DE8DA2C2C98B30015D585 /* MineCheck */ = {
 			isa = PBXGroup;
 			children = (
+				1A7B2B362C31F90000A40FA6 /* Extensions */,
 				1A1DE8FC2C2F8ED10015D585 /* Info.plist */,
 				1A1DE8F42C2F005A0015D585 /* Models */,
 				1A1DE8ED2C2EFAA50015D585 /* Views */,
@@ -102,6 +105,14 @@
 				1A1DE8F52C2F006C0015D585 /* MinecraftServer.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1A7B2B362C31F90000A40FA6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1A7B2B372C31F90D00A40FA6 /* ModelContainer+previews.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +195,7 @@
 				1A1DE8DE2C2C98B30015D585 /* ServerScreen.swift in Sources */,
 				1A1DE8DC2C2C98B30015D585 /* MineCheckApp.swift in Sources */,
 				1A1DE8EF2C2EFAB20015D585 /* ServerList.swift in Sources */,
+				1A7B2B382C31F90D00A40FA6 /* ModelContainer+previews.swift in Sources */,
 				1A1DE8F12C2EFBAB0015D585 /* AddServerToolbarItem.swift in Sources */,
 				1A1DE8F62C2F006C0015D585 /* MinecraftServer.swift in Sources */,
 				1A1DE8F32C2EFD530015D585 /* AddServerSheet.swift in Sources */,
@@ -418,7 +430,7 @@
 			repositoryURL = "https://github.com/jmshrv/MinecraftPing/";
 			requirement = {
 				kind = revision;
-				revision = d9d9aa6801ade71fe321be2765e922eaf365d0cc;
+				revision = 621bd95879329af9df338b85a1c73f3043b83f0a;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
