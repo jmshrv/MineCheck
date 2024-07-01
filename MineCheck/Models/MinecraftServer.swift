@@ -12,9 +12,9 @@ import SwiftData
 class MinecraftServer: Identifiable {
     var id = UUID()
     
-    var name: String
-    var hostname: String
-    var port: UInt16
+    var name: String = ""
+    var hostname: String = ""
+    var port: UInt16 = 25565
     
     required init(id: UUID = UUID(), name: String, hostname: String, port: UInt16) {
         self.id = UUID()
@@ -23,11 +23,7 @@ class MinecraftServer: Identifiable {
         self.port = port
     }
     
-    init() {
-        self.name = ""
-        self.hostname = ""
-        self.port = 25565
-    }
+    init() {}
 }
 
 extension MinecraftServer {
