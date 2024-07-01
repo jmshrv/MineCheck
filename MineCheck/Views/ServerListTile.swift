@@ -29,7 +29,11 @@ struct ServerListTile: View {
             } else if let pingError {
                 Text("\(pingError)")
             } else {
-                ProgressView()
+                HStack {
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }
             }
         }
 //        .frame(height: 150)
