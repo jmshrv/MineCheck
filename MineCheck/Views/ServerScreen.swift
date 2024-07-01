@@ -6,11 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ServerScreen: View {
+    @Query private var servers: [MinecraftServer]
+    
+    @State private var searchTerm = ""
+    
     var body: some View {
-        ServerList()
+        ServerList(searchTerm: searchTerm)
             .navigationTitle("Servers")
+            .if(!servers.isEmpty) {
+                $0.searchable(text: $searchTerm)
+            }
             .toolbar {
                 #if os(iOS)
                 ToolbarItem(placement: .topBarLeading) {

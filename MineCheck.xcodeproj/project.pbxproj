@@ -17,6 +17,7 @@
 		1A1DE8F32C2EFD530015D585 /* AddServerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8F22C2EFD530015D585 /* AddServerSheet.swift */; };
 		1A1DE8F62C2F006C0015D585 /* MinecraftServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8F52C2F006C0015D585 /* MinecraftServer.swift */; };
 		1A1DE8FB2C2F883E0015D585 /* ServerListTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8FA2C2F883E0015D585 /* ServerListTile.swift */; };
+		1A3817802C323BB60038142F /* View+if.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A38177F2C323BB60038142F /* View+if.swift */; };
 		1A7B2B382C31F90D00A40FA6 /* ModelContainer+previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B2B372C31F90D00A40FA6 /* ModelContainer+previews.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		1A1DE8F52C2F006C0015D585 /* MinecraftServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinecraftServer.swift; sourceTree = "<group>"; };
 		1A1DE8FA2C2F883E0015D585 /* ServerListTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTile.swift; sourceTree = "<group>"; };
 		1A1DE8FC2C2F8ED10015D585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1A38177F2C323BB60038142F /* View+if.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+if.swift"; sourceTree = "<group>"; };
 		1A7B2B372C31F90D00A40FA6 /* ModelContainer+previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelContainer+previews.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				1A7B2B372C31F90D00A40FA6 /* ModelContainer+previews.swift */,
+				1A38177F2C323BB60038142F /* View+if.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			files = (
 				1A1DE8FB2C2F883E0015D585 /* ServerListTile.swift in Sources */,
 				1A1DE8DE2C2C98B30015D585 /* ServerScreen.swift in Sources */,
+				1A3817802C323BB60038142F /* View+if.swift in Sources */,
 				1A1DE8DC2C2C98B30015D585 /* MineCheckApp.swift in Sources */,
 				1A1DE8EF2C2EFAB20015D585 /* ServerList.swift in Sources */,
 				1A7B2B382C31F90D00A40FA6 /* ModelContainer+previews.swift in Sources */,

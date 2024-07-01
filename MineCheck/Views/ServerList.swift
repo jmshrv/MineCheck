@@ -11,21 +11,48 @@ import SwiftData
 struct ServerList: View {
     @Environment(\.modelContext) private var context
     
-    @Query(sort: \MinecraftServer.name) private var allServers: [MinecraftServer]
+    @Query(sort: \MinecraftServer.name) private var servers: [MinecraftServer]
+    
+    private var isSearching = false
+    
+    init() {}
+    
+    init(searchTerm: String) {
+        isSearching = !searchTerm.isEmpty
+        
+        if !searchTerm.isEmpty {
+            _servers = Query(
+                filter: #Predicate { $0.name.localizedStandardContains(searchTerm) },
+                sort: \MinecraftServer.name
+            )
+        }
+    }
     
     var body: some View {
-        List {
-            ForEach(allServers) { server in
-                ServerListTile(server: server)
+        if servers.isEmpty {
+            if isSearching {
+                ContentUnavailableView.search
+            } else {
+                ContentUnavailableView(
+                    "No Servers",
+                    systemImage: "server.rack",
+                    description: Text("Tap the \(Image(systemName: "plus")) button to add a server.")
+                )
             }
-            .onDelete { indexSet in
-                let servers = indexSet.map { allServers[$0] }
-                
-                for server in servers {
-                    context.delete(server)
+        } else {
+            List {
+                ForEach(servers) { server in
+                    ServerListTile(server: server)
+                }
+                .onDelete { indexSet in
+                    let serversToDelete = indexSet.map { servers[$0] }
+                    
+                    for server in serversToDelete {
+                        context.delete(server)
+                    }
                 }
             }
+            .refreshable {}
         }
-        .refreshable {}
     }
 }
