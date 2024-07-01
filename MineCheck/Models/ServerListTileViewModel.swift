@@ -15,11 +15,15 @@ class ServerListTileViewModel {
     var status: MinecraftStatus?
     var pingError: (any Error)?
     
+    var wasEverLoaded = false
+    
     init(server: MinecraftServer) {
         self.server = server
     }
     
     func onAppear(force: Bool = false) async {
+        wasEverLoaded = true
+        
         if status != nil {
             if !force {
                 return
@@ -44,6 +48,10 @@ class ServerListTileViewModel {
     }
     
     func refresh() async {
+        if !wasEverLoaded {
+            return
+        }
+        
 //        status = nil
         withAnimation {
             pingError = nil

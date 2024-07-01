@@ -61,7 +61,6 @@ struct ServerList: View {
             .refreshable {
                 await withDiscardingTaskGroup { group in
                     for viewModel in viewModels {
-                        print("adding task")
                         group.addTask {
                             await viewModel.1.refresh()
                         }
