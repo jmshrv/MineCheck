@@ -13,8 +13,6 @@ struct AddServerSheet: View {
     
     @State var server: MinecraftServer = .init()
     
-    @State var showListTile = false
-    
     var body: some View {
         NavigationStack {
             Form {
@@ -39,13 +37,6 @@ struct AddServerSheet: View {
                             #endif
                     }
                 }
-                
-                if showListTile {
-                    Section("Preview") {
-                        ServerListTile(viewModel: .init(server: server))
-                    }
-                    .animation(.spring, value: showListTile)
-                }
             }
             .navigationTitle("Add Server")
             .toolbar {
@@ -56,14 +47,6 @@ struct AddServerSheet: View {
                     }
                     .disabled(!isValid)
                 }
-            }
-        }
-        .onAppear {
-            showListTile = isValid
-        }
-        .onChange(of: isValid) {
-            withAnimation {
-                showListTile = isValid
             }
         }
     }
