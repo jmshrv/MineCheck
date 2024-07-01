@@ -27,7 +27,19 @@ struct ServerListTile: View {
             if let status {
                 ServerListTileContent(server: server, status: status)
             } else if let pingError {
-                Text("\(pingError)")
+                HStack {
+                    Image(systemName: "exclamationmark.square.fill")
+                        .resizable()
+                        .foregroundStyle(.secondary)
+                        .frame(width: 64, height: 64)
+                        .padding(.trailing)
+                    VStack(alignment: .leading) {
+                        Text(server.name)
+                            .font(.headline)
+                        Text(pingError.localizedDescription)
+                            .font(.footnote)
+                    }
+                }
             } else {
                 HStack {
                     Spacer()
@@ -36,7 +48,7 @@ struct ServerListTile: View {
                 }
             }
         }
-//        .frame(height: 150)
+        .frame(minHeight: 64)
         .task {
             do {
                 try await status = connection.ping()
@@ -58,7 +70,8 @@ struct ServerListTileContent: View {
                     .resizable()
                     .interpolation(.none)
                     .frame(width: 64, height: 64)
-                    .clipShape(.rect(cornerRadius: 4))
+                    .clipShape(.rect(cornerRadius: 8))
+                    .padding(.trailing)
             }
             
             VStack(alignment: .leading) {
