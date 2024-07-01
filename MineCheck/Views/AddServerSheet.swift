@@ -20,17 +20,23 @@ struct AddServerSheet: View {
             Form {
                 Section("Server Info") {
                     TextField("Nickname", text: $server.name)
+                        #if os(iOS)
                         .textInputAutocapitalization(.words)
+                        #endif
                     HStack {
                         TextField("Hostname", text: $server.hostname)
+                            #if os(iOS)
                             .keyboardType(.URL)
                             .textInputAutocapitalization(.never)
                             .autocorrectionDisabled()
+                            #endif
                         Divider()
                         TextField("Port", value: $server.port, formatter: numberFormatter)
+                            #if os(iOS)
                             .keyboardType(.numberPad)
                             .textInputAutocapitalization(.never)
                             .autocorrectionDisabled()
+                            #endif
                     }
                 }
                 

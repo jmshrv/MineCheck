@@ -12,10 +12,12 @@ struct ServerScreen: View {
         ServerList()
             .navigationTitle("Servers")
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .topBarLeading) {
                     EditButton()
                 }
-                ToolbarItem(placement: .topBarTrailing) {
+                #endif
+                ToolbarItem(placement: .primaryAction) {
                     AddServerToolbarItem()
                 }
             }
