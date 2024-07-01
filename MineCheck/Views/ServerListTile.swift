@@ -22,7 +22,7 @@ struct ServerListTile: View {
                         .resizable()
                         .foregroundStyle(.secondary)
                         .frame(width: 64, height: 64)
-                        .padding(.trailing)
+                        .padding(.trailing, 10)
                     VStack(alignment: .leading) {
                         Text(viewModel.server.name)
                             .font(.headline)
