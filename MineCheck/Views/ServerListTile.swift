@@ -76,6 +76,7 @@ struct ServerListTileContent: View {
                 if let players = status.players {
                     Text("\(players.online)/\(players.max)")
                         .font(.headline)
+                        .contentTransition(.numericText())
                     
                     if let sample = players.sample {
                         ForEach(sample) { player in
@@ -85,6 +86,7 @@ struct ServerListTileContent: View {
                     }
                 } else {
                     Text("???")
+                        .font(.headline)
                 }
             }
         }

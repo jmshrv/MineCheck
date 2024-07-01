@@ -53,7 +53,10 @@ struct ServerList: View {
                 }
             }
             .onAppear {
-                viewModels = servers.map { ($0.id, .init(server: $0)) }
+                initViewModels()
+            }
+            .onChange(of: servers) {
+                initViewModels()
             }
             .refreshable {
                 await withDiscardingTaskGroup { group in
@@ -66,5 +69,9 @@ struct ServerList: View {
                 }
             }
         }
+    }
+    
+    func initViewModels() {
+        viewModels = servers.map { ($0.id, .init(server: $0)) }
     }
 }

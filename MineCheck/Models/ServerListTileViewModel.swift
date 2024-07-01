@@ -29,15 +29,26 @@ class ServerListTileViewModel {
         let connection = MinecraftConnection(hostname: server.hostname, port: server.port)
         
         do {
-            status = try await connection.ping()
+            let result = try await connection.ping()
+            
+            withAnimation {
+                status = result
+            }
+            
         } catch {
-            pingError = error
+            withAnimation {
+                status = nil
+                pingError = error
+            }
         }
     }
     
     func refresh() async {
 //        status = nil
-        pingError = nil
+        withAnimation {
+            pingError = nil
+        }
+        
         await onAppear(force: true)
     }
 }
