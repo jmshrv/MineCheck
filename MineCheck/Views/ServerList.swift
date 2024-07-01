@@ -13,9 +13,9 @@ struct ServerList: View {
     
     @Query(sort: \MinecraftServer.name) private var servers: [MinecraftServer]
     
-    private var isSearching = false
+    @State private var isSearching = false
     
-    init() {}
+    @State private var viewModels: [(UUID, ServerListTileViewModel)] = []
     
     init(searchTerm: String) {
         isSearching = !searchTerm.isEmpty
@@ -41,8 +41,8 @@ struct ServerList: View {
             }
         } else {
             List {
-                ForEach(servers) { server in
-                    ServerListTile(server: server)
+                ForEach(viewModels, id: \.0) { viewModel in
+                    ServerListTile(viewModel: viewModel.1)
                 }
                 .onDelete { indexSet in
                     let serversToDelete = indexSet.map { servers[$0] }
@@ -52,7 +52,19 @@ struct ServerList: View {
                     }
                 }
             }
-            .refreshable {}
+            .onAppear {
+                viewModels = servers.map { ($0.id, .init(server: $0)) }
+            }
+            .refreshable {
+                await withDiscardingTaskGroup { group in
+                    for viewModel in viewModels {
+                        print("adding task")
+                        group.addTask {
+                            await viewModel.1.refresh()
+                        }
+                    }
+                }
+            }
         }
     }
 }

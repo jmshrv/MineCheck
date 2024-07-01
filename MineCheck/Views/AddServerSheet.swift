@@ -42,7 +42,7 @@ struct AddServerSheet: View {
                 
                 if showListTile {
                     Section("Preview") {
-                        ServerListTile(server: server)
+                        ServerListTile(viewModel: .init(server: server))
                     }
                     .animation(.spring, value: showListTile)
                 }

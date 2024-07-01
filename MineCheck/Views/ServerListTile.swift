@@ -10,23 +10,13 @@ import SwiftUI
 import MinecraftPing
 
 struct ServerListTile: View {
-    let server: MinecraftServer
-    
-    private let connection: MinecraftConnection
-    
-    @State private var status: MinecraftStatus?
-    @State private var pingError: (any Error)?
-    
-    init(server: MinecraftServer) {
-        self.server = server
-        self.connection = .init(hostname: server.hostname, port: server.port)
-    }
+    let viewModel: ServerListTileViewModel
     
     var body: some View {
         Group {
-            if let status {
-                ServerListTileContent(server: server, status: status)
-            } else if let pingError {
+            if let status = viewModel.status {
+                ServerListTileContent(server: viewModel.server, status: status)
+            } else if let pingError = viewModel.pingError {
                 HStack {
                     Image(systemName: "exclamationmark.square.fill")
                         .resizable()
@@ -34,7 +24,7 @@ struct ServerListTile: View {
                         .frame(width: 64, height: 64)
                         .padding(.trailing)
                     VStack(alignment: .leading) {
-                        Text(server.name)
+                        Text(viewModel.server.name)
                             .font(.headline)
                         Text(pingError.localizedDescription)
                             .font(.footnote)
@@ -50,11 +40,7 @@ struct ServerListTile: View {
         }
         .frame(minHeight: 64)
         .task {
-            do {
-                try await status = connection.ping()
-            } catch {
-                pingError = error
-            }
+            await viewModel.onAppear()
         }
     }
 }
