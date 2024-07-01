@@ -71,7 +71,7 @@ struct ServerListTileContent: View {
                     .interpolation(.none)
                     .frame(width: 64, height: 64)
                     .clipShape(.rect(cornerRadius: 8))
-                    .padding(.trailing)
+                    .padding(.trailing, 10)
             }
             
             VStack(alignment: .leading) {
