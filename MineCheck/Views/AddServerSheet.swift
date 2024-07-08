@@ -16,38 +16,46 @@ struct AddServerSheet: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Server Info") {
-                    TextField("Nickname", text: $server.name)
+                TextField("Nickname", text: $server.name)
+                    #if os(iOS)
+                    .textInputAutocapitalization(.words)
+                    #endif
+                HStack {
+                    TextField("Hostname", text: $server.hostname)
+                        .frame(maxWidth: .infinity)
                         #if os(iOS)
-                        .textInputAutocapitalization(.words)
+                        .keyboardType(.URL)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
                         #endif
-                    HStack {
-                        TextField("Hostname", text: $server.hostname)
-                            #if os(iOS)
-                            .keyboardType(.URL)
-                            .textInputAutocapitalization(.never)
-                            .autocorrectionDisabled()
-                            #endif
-                        Divider()
-                        TextField("Port", value: $server.port, formatter: numberFormatter)
-                            #if os(iOS)
-                            .keyboardType(.numberPad)
-                            .textInputAutocapitalization(.never)
-                            .autocorrectionDisabled()
-                            #endif
-                    }
+                    #if os(iOS)
+                    Divider()
+                    #endif
+                    TextField("Port", value: $server.port, formatter: numberFormatter)
+                        .frame(width: 100)
+                        #if os(iOS)
+                        .keyboardType(.numberPad)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                        #else
+                        .labelsHidden()
+                        #endif
                 }
             }
             .navigationTitle("Add Server")
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
+//                ToolbarItem(placement: .primaryAction) {
                     Button("Add") {
                         context.insert(server)
                         dismiss()
                     }
                     .disabled(!isValid)
-                }
+//                }
             }
+            #if os(macOS)
+            .frame(width: 400)
+            .padding()
+            #endif
         }
     }
     
@@ -64,7 +72,7 @@ struct AddServerSheet: View {
     }
 }
 
-#Preview {
+#Preview("Sheet") {
     NavigationStack {
         Text("Hello, World!")
             .sheet(isPresented: .constant(true)) {
