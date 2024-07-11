@@ -25,6 +25,7 @@ struct ServerScreen: View {
                     EditButton()
                 }
                 #endif
+                
                 ToolbarItem(placement: .primaryAction) {
                     AddServerToolbarItem()
                 }

@@ -51,6 +51,13 @@ struct ServerList: View {
                         context.delete(server)
                     }
                 }
+                #if os(macOS)
+                .toolbar {
+                    ToolbarItem(placement: .secondaryAction) {
+                        RefreshToolbarItem()
+                    }
+                }
+                #endif
             }
             .onAppear {
                 initViewModels()

@@ -27,6 +27,7 @@
 		1A7C371E2C3702F800CB3285 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7C371D2C3702F800CB3285 /* AppIntent.swift */; };
 		1A7C37202C3702F900CB3285 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A7C371F2C3702F900CB3285 /* Assets.xcassets */; };
 		1A7C37252C3702F900CB3285 /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1A7C37122C3702F800CB3285 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1AD005D72C403D6C00923377 /* RefreshToolbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD005D62C403D6C00923377 /* RefreshToolbarItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		1A7C371F2C3702F900CB3285 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A7C37212C3702F900CB3285 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A7C37222C3702F900CB3285 /* Widgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widgets.entitlements; sourceTree = "<group>"; };
+		1AD005D62C403D6C00923377 /* RefreshToolbarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshToolbarItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				1A1DE8F02C2EFBAB0015D585 /* AddServerToolbarItem.swift */,
 				1A1DE8F22C2EFD530015D585 /* AddServerSheet.swift */,
 				1A1DE8FA2C2F883E0015D585 /* ServerListTile.swift */,
+				1AD005D62C403D6C00923377 /* RefreshToolbarItem.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				1A1DE8EF2C2EFAB20015D585 /* ServerList.swift in Sources */,
 				1A7B2B382C31F90D00A40FA6 /* ModelContainer+previews.swift in Sources */,
 				1A1DE8F12C2EFBAB0015D585 /* AddServerToolbarItem.swift in Sources */,
+				1AD005D72C403D6C00923377 /* RefreshToolbarItem.swift in Sources */,
 				1A1DE8F62C2F006C0015D585 /* MinecraftServer.swift in Sources */,
 				1A1DE8F32C2EFD530015D585 /* AddServerSheet.swift in Sources */,
 			);

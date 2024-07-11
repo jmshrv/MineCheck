@@ -11,7 +11,8 @@ struct AddServerToolbarItem: View {
     @State private var isSheetPresented = false
     
     var body: some View {
-        Button("Add server", systemImage: "plus", action: addServerAction)
+        Button("Add Server", systemImage: "plus", action: addServerAction)
+            .keyboardShortcut("n")
             .sheet(isPresented: $isSheetPresented) {
                 AddServerSheet()
             }

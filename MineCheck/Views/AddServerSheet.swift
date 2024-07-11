@@ -44,13 +44,18 @@ struct AddServerSheet: View {
             }
             .navigationTitle("Add Server")
             .toolbar {
-//                ToolbarItem(placement: .primaryAction) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button("Add") {
                         context.insert(server)
                         dismiss()
                     }
                     .disabled(!isValid)
-//                }
+                }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                }
             }
             #if os(macOS)
             .frame(width: 400)
