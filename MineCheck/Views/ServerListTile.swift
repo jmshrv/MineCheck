@@ -15,7 +15,7 @@ struct ServerListTile: View {
     var body: some View {
         Group {
             if let status = viewModel.status {
-                ServerListTileContent(server: viewModel.server, status: status)
+                ServerListTileContent(server: viewModel.server, status: status, lastUpdate: viewModel.lastUpdate)
             } else if let pingError = viewModel.pingError {
                 HStack {
                     Image(systemName: "exclamationmark.square.fill")
@@ -48,6 +48,7 @@ struct ServerListTile: View {
 struct ServerListTileContent: View {
     let server: MinecraftServer
     let status: MinecraftStatus
+    let lastUpdate: Date
     
     var body: some View {
         HStack {
@@ -68,6 +69,10 @@ struct ServerListTileContent: View {
                     Text(description)
                         .font(.footnote)
                 }
+                
+                Text("Last update: \(lastUpdate, style: .time)")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
             
             Spacer()
@@ -96,7 +101,7 @@ struct ServerListTileContent: View {
 #Preview("Single") {
     let container = ModelContainer.previews
     
-    return ServerListTileContent(server: .mock, status: .mock)
+    return ServerListTileContent(server: .mock, status: .mock, lastUpdate: .now)
         .modelContainer(container)
 }
 
@@ -104,9 +109,9 @@ struct ServerListTileContent: View {
     let container = ModelContainer.previews
     
     return List {
-        ServerListTileContent(server: .mock, status: .mock)
-        ServerListTileContent(server: .mock, status: .mock)
-        ServerListTileContent(server: .mock, status: .mock)
+        ServerListTileContent(server: .mock, status: .mock, lastUpdate: .now)
+        ServerListTileContent(server: .mock, status: .mock, lastUpdate: .now)
+        ServerListTileContent(server: .mock, status: .mock, lastUpdate: .now)
     }
     .modelContainer(container)
 }

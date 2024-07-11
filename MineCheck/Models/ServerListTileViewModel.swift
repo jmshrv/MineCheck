@@ -14,6 +14,7 @@ class ServerListTileViewModel {
     
     var status: MinecraftStatus?
     var pingError: (any Error)?
+    var lastUpdate: Date = .now
     
     var wasEverLoaded = false
     
@@ -37,11 +38,13 @@ class ServerListTileViewModel {
             
             withAnimation {
                 status = result
+                lastUpdate = .now
             }
             
         } catch {
             withAnimation {
                 status = nil
+                lastUpdate = .now
                 pingError = error
             }
         }
