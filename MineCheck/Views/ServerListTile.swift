@@ -84,7 +84,7 @@ struct ServerListTileContent: View {
                         .font(.headline)
                         .contentTransition(.numericText())
                     
-                    if let sample = players.sample {
+                    if let sample = players.sample?.sorted(by: { $0.name.localizedStandardCompare($1.name) == .orderedAscending }) {
                         ForEach(sample) { player in
                             Text(player.name)
                                 .font(.footnote)
