@@ -64,6 +64,7 @@ struct ServerListTileContent: View {
             VStack(alignment: .leading) {
                 Text(server.name)
                     .font(.headline)
+                    .lineLimit(2)
                 
                 if let description = status.description?.actualText {
                     Text(description)
