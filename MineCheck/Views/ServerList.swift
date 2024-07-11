@@ -43,6 +43,11 @@ struct ServerList: View {
             List {
                 ForEach(viewModels, id: \.0) { viewModel in
                     ServerListTile(viewModel: viewModel.1)
+                        .contextMenu {
+                            Button("Delete", systemImage: "trash", role: .destructive) {
+                                context.delete(viewModel.1.server)
+                            }
+                        }
                 }
                 .onDelete { indexSet in
                     let serversToDelete = indexSet.map { servers[$0] }
