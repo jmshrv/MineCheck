@@ -44,6 +44,11 @@ struct ServerList: View {
                 ForEach(viewModels, id: \.0) { viewModel in
                     ServerListTile(viewModel: viewModel.1)
                         .contextMenu {
+                            Button("Refresh", systemImage: "arrow.clockwise") {
+                                Task {
+                                    await viewModel.1.refresh()
+                                }
+                            }
                             Button("Delete", systemImage: "trash", role: .destructive) {
                                 context.delete(viewModel.1.server)
                             }
@@ -56,14 +61,15 @@ struct ServerList: View {
                         context.delete(server)
                     }
                 }
-                #if os(macOS)
-                .toolbar {
-                    ToolbarItem(placement: .secondaryAction) {
-                        RefreshToolbarItem()
-                    }
-                }
-                #endif
+                
             }
+            #if os(macOS)
+            .toolbar {
+                ToolbarItem(placement: .secondaryAction) {
+                    RefreshToolbarItem()
+                }
+            }
+            #endif
             .onAppear {
                 initViewModels()
             }
