@@ -15,7 +15,7 @@ struct ServerScreen: View {
     
     var body: some View {
         ServerList(searchTerm: searchTerm)
-            .navigationTitle("Servers")
+            .navigationTitle("MineCheck")
             .if(!servers.isEmpty) {
                 $0.searchable(text: $searchTerm)
             }
