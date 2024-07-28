@@ -10,6 +10,8 @@ import SwiftUI
 import MinecraftPing
 
 struct ServerListTile: View {
+    @Environment(\.scenePhase) private var scenePhase
+    
     let viewModel: ServerListTileViewModel
     
     var body: some View {
@@ -41,6 +43,13 @@ struct ServerListTile: View {
         .frame(minHeight: 64)
         .task {
             await viewModel.onAppear()
+        }
+        .onChange(of: scenePhase) { oldPhase, newPhase in
+            if newPhase == .active {
+                Task {
+                    await viewModel.refresh()
+                }
+            }
         }
     }
 }
