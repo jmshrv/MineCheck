@@ -11,6 +11,9 @@
 		1A0699112C4432BF00AE7766 /* ServerListTileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3817812C3310DD0038142F /* ServerListTileViewModel.swift */; };
 		1A0699132C44331200AE7766 /* MinecraftPing in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0699122C44331200AE7766 /* MinecraftPing */; };
 		1A0699142C44332900AE7766 /* ModelContainer+previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B2B372C31F90D00A40FA6 /* ModelContainer+previews.swift */; };
+		1A0B21E22C5AEE3D00C50775 /* ServerAccessoryRectangular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0B21E12C5AEE0400C50775 /* ServerAccessoryRectangular.swift */; };
+		1A0B21E42C5AF48C00C50775 /* PlayerCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0B21E32C5AF48C00C50775 /* PlayerCount.swift */; };
+		1A0B21E52C5AF48C00C50775 /* PlayerCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0B21E32C5AF48C00C50775 /* PlayerCount.swift */; };
 		1A1DE8DC2C2C98B30015D585 /* MineCheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8DB2C2C98B30015D585 /* MineCheckApp.swift */; };
 		1A1DE8DE2C2C98B30015D585 /* ServerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8DD2C2C98B30015D585 /* ServerScreen.swift */; };
 		1A1DE8E02C2C98B40015D585 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A1DE8DF2C2C98B40015D585 /* Assets.xcassets */; };
@@ -61,6 +64,8 @@
 
 /* Begin PBXFileReference section */
 		1A0699152C44335100AE7766 /* SwiftData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/SwiftData.framework; sourceTree = DEVELOPER_DIR; };
+		1A0B21E12C5AEE0400C50775 /* ServerAccessoryRectangular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerAccessoryRectangular.swift; sourceTree = "<group>"; };
+		1A0B21E32C5AF48C00C50775 /* PlayerCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCount.swift; sourceTree = "<group>"; };
 		1A1DE8D82C2C98B30015D585 /* MineCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MineCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A1DE8DB2C2C98B30015D585 /* MineCheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCheckApp.swift; sourceTree = "<group>"; };
 		1A1DE8DD2C2C98B30015D585 /* ServerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerScreen.swift; sourceTree = "<group>"; };
@@ -159,6 +164,7 @@
 				1A1DE8F22C2EFD530015D585 /* AddServerSheet.swift */,
 				1A1DE8FA2C2F883E0015D585 /* ServerListTile.swift */,
 				1AD005D62C403D6C00923377 /* RefreshToolbarItem.swift */,
+				1A0B21E32C5AF48C00C50775 /* PlayerCount.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +200,7 @@
 		1A7C37182C3702F800CB3285 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				1A0B21E12C5AEE0400C50775 /* ServerAccessoryRectangular.swift */,
 				1A7C37192C3702F800CB3285 /* WidgetsBundle.swift */,
 				1A7C371B2C3702F800CB3285 /* Widgets.swift */,
 				1A7C371D2C3702F800CB3285 /* AppIntent.swift */,
@@ -324,6 +331,7 @@
 				1A1DE8F12C2EFBAB0015D585 /* AddServerToolbarItem.swift in Sources */,
 				1AD005D72C403D6C00923377 /* RefreshToolbarItem.swift in Sources */,
 				1A1DE8F62C2F006C0015D585 /* MinecraftServer.swift in Sources */,
+				1A0B21E42C5AF48C00C50775 /* PlayerCount.swift in Sources */,
 				1A1DE8F32C2EFD530015D585 /* AddServerSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,8 +344,10 @@
 				1A0699102C4432B200AE7766 /* ServerListTile.swift in Sources */,
 				1AF566372C42FDD700E1B447 /* MinecraftServer.swift in Sources */,
 				1A7C371A2C3702F800CB3285 /* WidgetsBundle.swift in Sources */,
+				1A0B21E22C5AEE3D00C50775 /* ServerAccessoryRectangular.swift in Sources */,
 				1A7C371C2C3702F800CB3285 /* Widgets.swift in Sources */,
 				1A7C371E2C3702F800CB3285 /* AppIntent.swift in Sources */,
+				1A0B21E52C5AF48C00C50775 /* PlayerCount.swift in Sources */,
 				1A0699112C4432BF00AE7766 /* ServerListTileViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

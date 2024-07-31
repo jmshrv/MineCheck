@@ -73,23 +73,34 @@ struct SimpleEntry: TimelineEntry {
     let status: MinecraftStatus
 }
 
-struct Widgets: Widget {
-    let kind: String = "Widgets"
+struct ServerSystemTile: Widget {
+    let kind: String = "ServerSystemTile"
 
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: MinecraftServerAppIntent.self, provider: Provider()) { entry in
-            Group {
-                ServerListTileContent(server: entry.server, status: entry.status, lastUpdate: entry.date)
-            }
-            .containerBackground(.fill.tertiary, for: .widget)
-            .modelContainer(for: MinecraftServer.self)
+            ServerListTileContent(server: entry.server, status: entry.status, lastUpdate: entry.date)
+                .containerBackground(.fill.tertiary, for: .widget)
+                .modelContainer(for: MinecraftServer.self)
         }
+        .supportedFamilies([.systemMedium])
     }
 }
 
-//#Preview(as: .systemSmall) {
-//    Widgets()
-//} timeline: {
-//    SimpleEntry(date: .now, configuration: .smiley)
-//    SimpleEntry(date: .now, configuration: .starEyes)
-//}
+struct ServerAccessoryRectangularWidget: Widget {
+    let kind: String = "ServerAccessoryRectangularWidget"
+
+    var body: some WidgetConfiguration {
+        AppIntentConfiguration(kind: kind, intent: MinecraftServerAppIntent.self, provider: Provider()) { entry in
+            ServerAccessoryRectangular(server: entry.server, status: entry.status, lastUpdate: entry.date)
+                .containerBackground(.fill.tertiary, for: .widget)
+                .modelContainer(for: MinecraftServer.self)
+        }
+        .supportedFamilies([.accessoryRectangular])
+    }
+}
+
+#Preview(as: .systemMedium) {
+    ServerSystemTile()
+} timeline: {
+    SimpleEntry(date: .now, server: .mock, status: .mock)
+}

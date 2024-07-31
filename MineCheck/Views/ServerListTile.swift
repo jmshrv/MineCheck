@@ -89,10 +89,8 @@ struct ServerListTileContent: View {
             
             VStack(alignment: .trailing) {
                 if let players = status.players {
-                    Text("\(players.online)/\(players.max)")
+                    PlayerCount(players: players)
                         .font(.headline)
-                        .contentTransition(.numericText())
-                    
                     if let sample = players.sample?.sorted(by: { $0.name.localizedStandardCompare($1.name) == .orderedAscending }) {
                         ForEach(sample) { player in
                             Text(player.name)
