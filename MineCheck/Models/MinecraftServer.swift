@@ -5,11 +5,13 @@
 //  Created by James on 28/06/2024.
 //
 
+import AppIntents
 import Foundation
 import SwiftData
+import OSLog
 
 @Model
-class MinecraftServer: Identifiable {
+final class MinecraftServer: Identifiable, Sendable {
     var id = UUID()
     
     var name: String
@@ -37,5 +39,84 @@ extension MinecraftServer {
             hostname: "example.com",
             port: 25565
         )
+    }
+}
+
+struct MinecraftServerAppEntity: AppEntity, Identifiable {
+    let id: UUID
+    
+    let name: String
+    let hostname: String
+    let port: UInt16
+    
+    static var defaultQuery = MinecraftServerEntityQuery()
+    
+    static var typeDisplayRepresentation: TypeDisplayRepresentation {
+        TypeDisplayRepresentation(
+            name: LocalizedStringResource("Server", table: "AppIntents"),
+            numericFormat: LocalizedStringResource("\(placeholder: .int) servers", table: "AppIntents")
+        )
+    }
+    
+    var displayRepresentation: DisplayRepresentation {
+        DisplayRepresentation(title: "\(name)", subtitle: "\(hostname):\(port)")
+    }
+}
+
+struct MinecraftServerEntityQuery: EntityQuery {
+    let logger = Logger(subsystem: "com.unicornsonlsd.minecheck", category: "MinecraftServerEntityQuery")
+    
+    func entities(for identifiers: [MinecraftServerAppEntity.ID]) async throws -> [MinecraftServerAppEntity] {
+        logger.info("Fetching MinecraftServerAppEntity")
+        
+        do {
+            let container = try ModelContainer(for: MinecraftServer.self)
+            let context = ModelContext(container)
+            
+            logger.info("Context created")
+            
+            let servers = try context.fetch(FetchDescriptor<MinecraftServer>(sortBy: [.init(\.name)]))
+            
+            logger.info("\(servers.count) fetched")
+            
+            let entities = servers.map { MinecraftServerAppEntity(
+                id: $0.id,
+                name: $0.name,
+                hostname: $0.hostname,
+                port: $0.port
+            ) }
+            
+            return entities
+        } catch {
+            logger.error("\(error)")
+            throw error
+        }
+    }
+    
+    func suggestedEntities() async throws -> [MinecraftServerAppEntity] {
+        logger.info("Fetching MinecraftServerAppEntity from suggested")
+        
+        do {
+            let container = try ModelContainer(for: MinecraftServer.self)
+            let context = ModelContext(container)
+            
+            logger.info("Context created")
+            
+            let servers = try context.fetch(FetchDescriptor<MinecraftServer>(sortBy: [.init(\.name)]))
+            
+            logger.info("\(servers.count) fetched")
+            
+            let entities = servers.map { MinecraftServerAppEntity(
+                id: $0.id,
+                name: $0.name,
+                hostname: $0.hostname,
+                port: $0.port
+            ) }
+            
+            return entities
+        } catch {
+            logger.error("\(error)")
+            throw error
+        }
     }
 }

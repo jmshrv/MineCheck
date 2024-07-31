@@ -8,11 +8,9 @@
 import WidgetKit
 import AppIntents
 
-struct ConfigurationAppIntent: WidgetConfigurationIntent {
-    static var title: LocalizedStringResource = "Configuration"
-    static var description = IntentDescription("This is an example widget.")
+struct MinecraftServerAppIntent: WidgetConfigurationIntent {
+    static var title: LocalizedStringResource = "Server"
 
-    // An example configurable parameter.
-    @Parameter(title: "Favorite Emoji", default: "😃")
-    var favoriteEmoji: String
+    @Parameter(title: "Server")
+    var server: MinecraftServerAppEntity?
 }

@@ -7,76 +7,89 @@
 
 import WidgetKit
 import SwiftUI
+import SwiftData
+import MinecraftPing
 
 struct Provider: AppIntentTimelineProvider {
+    var sharedModelContainer: ModelContainer = { // Note that we create and assign this value;
+        let schema = Schema([MinecraftServer.self])        // it is not a computed property.
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+
+        do {
+          return try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+          fatalError("Could not create ModelContainer: \(error)")
+        }
+      }()
+    
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
+        SimpleEntry(date: Date(), server: .mock, status: .mock)
     }
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
+    func snapshot(for configuration: MinecraftServerAppIntent, in context: Context) async -> SimpleEntry {
+        SimpleEntry(date: Date(), server: .mock, status: .mock)
     }
     
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
+    func timeline(for configuration: MinecraftServerAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
+        guard let server = configuration.server else {
+            return Timeline(entries: [SimpleEntry(date: Date(), server: .mock, status: .mock)], policy: .atEnd)
+        }
+        
+        let connection = MinecraftConnection(hostname: server.hostname, port: server.port)
+        
+        guard let status = try? await connection.ping() else {
+            return Timeline(
+                entries: [SimpleEntry(date: Date(), server: .mock, status: .mock)],
+                policy: .after(
+                    .now.addingTimeInterval(
+                        15 * 60
+                    )
+                )
+            )
         }
 
-        return Timeline(entries: entries, policy: .atEnd)
+        return Timeline(
+            entries: [SimpleEntry(
+                date: .now,
+                server: .init(
+                    name: server.name,
+                    hostname: server.hostname,
+                    port: server.port
+                ),
+                status: status
+            )],
+            policy: .after(
+                .now.addingTimeInterval(
+                    15 * 60
+                )
+            )
+        )
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationAppIntent
-}
-
-struct WidgetsEntryView : View {
-    var entry: Provider.Entry
-
-    var body: some View {
-        Text("Time:")
-        Text(entry.date, style: .time)
-
-        Text("Favorite Emoji:")
-        Text(entry.configuration.favoriteEmoji)
-    }
+    let server: MinecraftServer
+    let status: MinecraftStatus
 }
 
 struct Widgets: Widget {
     let kind: String = "Widgets"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-            WidgetsEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
+        AppIntentConfiguration(kind: kind, intent: MinecraftServerAppIntent.self, provider: Provider()) { entry in
+            Group {
+                ServerListTileContent(server: entry.server, status: entry.status, lastUpdate: entry.date)
+            }
+            .containerBackground(.fill.tertiary, for: .widget)
+            .modelContainer(for: MinecraftServer.self)
         }
     }
 }
 
-extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
-        return intent
-    }
-    
-    fileprivate static var starEyes: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
-        return intent
-    }
-}
-
-#Preview(as: .systemSmall) {
-    Widgets()
-} timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
-    SimpleEntry(date: .now, configuration: .starEyes)
-}
+//#Preview(as: .systemSmall) {
+//    Widgets()
+//} timeline: {
+//    SimpleEntry(date: .now, configuration: .smiley)
+//    SimpleEntry(date: .now, configuration: .starEyes)
+//}

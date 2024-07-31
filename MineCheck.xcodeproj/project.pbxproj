@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A0699102C4432B200AE7766 /* ServerListTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8FA2C2F883E0015D585 /* ServerListTile.swift */; };
+		1A0699112C4432BF00AE7766 /* ServerListTileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3817812C3310DD0038142F /* ServerListTileViewModel.swift */; };
+		1A0699132C44331200AE7766 /* MinecraftPing in Frameworks */ = {isa = PBXBuildFile; productRef = 1A0699122C44331200AE7766 /* MinecraftPing */; };
+		1A0699142C44332900AE7766 /* ModelContainer+previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B2B372C31F90D00A40FA6 /* ModelContainer+previews.swift */; };
 		1A1DE8DC2C2C98B30015D585 /* MineCheckApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8DB2C2C98B30015D585 /* MineCheckApp.swift */; };
 		1A1DE8DE2C2C98B30015D585 /* ServerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8DD2C2C98B30015D585 /* ServerScreen.swift */; };
 		1A1DE8E02C2C98B40015D585 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A1DE8DF2C2C98B40015D585 /* Assets.xcassets */; };
@@ -28,6 +32,7 @@
 		1A7C37202C3702F900CB3285 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A7C371F2C3702F900CB3285 /* Assets.xcassets */; };
 		1A7C37252C3702F900CB3285 /* WidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 1A7C37122C3702F800CB3285 /* WidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1AD005D72C403D6C00923377 /* RefreshToolbarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD005D62C403D6C00923377 /* RefreshToolbarItem.swift */; };
+		1AF566372C42FDD700E1B447 /* MinecraftServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8F52C2F006C0015D585 /* MinecraftServer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A0699152C44335100AE7766 /* SwiftData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/System/Library/Frameworks/SwiftData.framework; sourceTree = DEVELOPER_DIR; };
 		1A1DE8D82C2C98B30015D585 /* MineCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MineCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A1DE8DB2C2C98B30015D585 /* MineCheckApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCheckApp.swift; sourceTree = "<group>"; };
 		1A1DE8DD2C2C98B30015D585 /* ServerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerScreen.swift; sourceTree = "<group>"; };
@@ -94,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A0699132C44331200AE7766 /* MinecraftPing in Frameworks */,
 				1A7C37172C3702F800CB3285 /* SwiftUI.framework in Frameworks */,
 				1A7C37152C3702F800CB3285 /* WidgetKit.framework in Frameworks */,
 			);
@@ -177,6 +184,7 @@
 		1A7C37132C3702F800CB3285 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A0699152C44335100AE7766 /* SwiftData.framework */,
 				1A7C37142C3702F800CB3285 /* WidgetKit.framework */,
 				1A7C37162C3702F800CB3285 /* SwiftUI.framework */,
 			);
@@ -234,6 +242,9 @@
 			dependencies = (
 			);
 			name = WidgetsExtension;
+			packageProductDependencies = (
+				1A0699122C44331200AE7766 /* MinecraftPing */,
+			);
 			productName = WidgetsExtension;
 			productReference = 1A7C37122C3702F800CB3285 /* WidgetsExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -321,9 +332,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A0699142C44332900AE7766 /* ModelContainer+previews.swift in Sources */,
+				1A0699102C4432B200AE7766 /* ServerListTile.swift in Sources */,
+				1AF566372C42FDD700E1B447 /* MinecraftServer.swift in Sources */,
 				1A7C371A2C3702F800CB3285 /* WidgetsBundle.swift in Sources */,
 				1A7C371C2C3702F800CB3285 /* Widgets.swift in Sources */,
 				1A7C371E2C3702F800CB3285 /* AppIntent.swift in Sources */,
+				1A0699112C4432BF00AE7766 /* ServerListTileViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +671,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1A0699122C44331200AE7766 /* MinecraftPing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A1DE8EA2C2EF9A60015D585 /* XCRemoteSwiftPackageReference "MinecraftPing" */;
+			productName = MinecraftPing;
+		};
 		1A1DE8EB2C2EF9A60015D585 /* MinecraftPing */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1A1DE8EA2C2EF9A60015D585 /* XCRemoteSwiftPackageReference "MinecraftPing" */;
