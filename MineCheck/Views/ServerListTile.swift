@@ -17,7 +17,7 @@ struct ServerListTile: View {
     var body: some View {
         Group {
             if let status = viewModel.status {
-                ServerListTileContent(server: viewModel.server, status: status, lastUpdate: viewModel.lastUpdate)
+                ServerListTileContent(server: viewModel.server, status: status, lastUpdate: viewModel.lastUpdate, skins: viewModel.skins)
             } else if let pingError = viewModel.pingError {
                 HStack {
                     Image(systemName: "exclamationmark.square.fill")
@@ -58,6 +58,7 @@ struct ServerListTileContent: View {
     let server: MinecraftServer
     let status: MinecraftStatus
     let lastUpdate: Date
+    let skins: [(MinecraftPlayerSample, Data?)]
     
     var body: some View {
         HStack {
@@ -96,6 +97,8 @@ struct ServerListTileContent: View {
                             Text(player.name)
                                 .font(.footnote)
                         }
+                        
+                        PlayerSkinList(skins: skins)
                     }
                 } else {
                     Text("???")
@@ -109,7 +112,7 @@ struct ServerListTileContent: View {
 #Preview("Single") {
     let container = ModelContainer.previews
     
-    return ServerListTileContent(server: .mock, status: .mock, lastUpdate: .now)
+    return ServerListTileContent(server: .mock, status: .mock, lastUpdate: .now, skins: [])
         .modelContainer(container)
 }
 
@@ -117,9 +120,9 @@ struct ServerListTileContent: View {
     let container = ModelContainer.previews
     
     return List {
-        ServerListTileContent(server: .mock, status: .mock, lastUpdate: .now)
-        ServerListTileContent(server: .mock, status: .mock, lastUpdate: .now)
-        ServerListTileContent(server: .mock, status: .mock, lastUpdate: .now)
+        ServerListTileContent(server: .mock, status: .mock, lastUpdate: .now, skins: [])
+        ServerListTileContent(server: .mock, status: .mock, lastUpdate: .now, skins: [])
+        ServerListTileContent(server: .mock, status: .mock, lastUpdate: .now, skins: [])
     }
     .modelContainer(container)
 }

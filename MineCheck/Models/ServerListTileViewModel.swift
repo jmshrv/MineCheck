@@ -15,6 +15,7 @@ class ServerListTileViewModel {
     var status: MinecraftStatus?
     var pingError: (any Error)?
     var lastUpdate: Date = .now
+    var skins: [(MinecraftPlayerSample, Data?)] = []
     
     var wasEverLoaded = false
     
@@ -36,9 +37,16 @@ class ServerListTileViewModel {
         do {
             let result = try await connection.ping()
             
+            var newSkins: [(MinecraftPlayerSample, Data?)] = []
+            
+            if let players = result.players {
+                newSkins = try await players.skins() ?? []
+            }
+            
             withAnimation {
                 status = result
                 lastUpdate = .now
+                skins = newSkins
             }
             
         } catch {

@@ -12,6 +12,8 @@ import SwiftUI
 struct WidgetsBundle: WidgetBundle {
     var body: some Widget {
         ServerSystemTile()
+        #if !os(macOS)
         ServerAccessoryRectangularWidget()
+        #endif
     }
 }
