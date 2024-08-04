@@ -64,59 +64,38 @@ struct MinecraftServerAppEntity: AppEntity, Identifiable {
 }
 
 struct MinecraftServerEntityQuery: EntityQuery {
-    let logger = Logger(subsystem: "com.unicornsonlsd.minecheck", category: "MinecraftServerEntityQuery")
-    
     func entities(for identifiers: [MinecraftServerAppEntity.ID]) async throws -> [MinecraftServerAppEntity] {
-        logger.info("Fetching MinecraftServerAppEntity")
+        let container = try ModelContainer(for: MinecraftServer.self)
+        let context = ModelContext(container)
         
-        do {
-            let container = try ModelContainer(for: MinecraftServer.self)
-            let context = ModelContext(container)
-            
-            logger.info("Context created")
-            
-            let servers = try context.fetch(FetchDescriptor<MinecraftServer>(sortBy: [.init(\.name)]))
-            
-            logger.info("\(servers.count) fetched")
-            
-            let entities = servers.map { MinecraftServerAppEntity(
-                id: $0.id,
-                name: $0.name,
-                hostname: $0.hostname,
-                port: $0.port
-            ) }
-            
-            return entities
-        } catch {
-            logger.error("\(error)")
-            throw error
-        }
+        let servers = try context.fetch(FetchDescriptor<MinecraftServer>(
+            predicate: #Predicate { identifiers.contains($0.id) },
+            sortBy: [.init(\.name)])
+        )
+        
+        let entities = servers.map { MinecraftServerAppEntity(
+            id: $0.id,
+            name: $0.name,
+            hostname: $0.hostname,
+            port: $0.port
+        ) }
+        
+        return entities
     }
     
     func suggestedEntities() async throws -> [MinecraftServerAppEntity] {
-        logger.info("Fetching MinecraftServerAppEntity from suggested")
+        let container = try ModelContainer(for: MinecraftServer.self)
+        let context = ModelContext(container)
         
-        do {
-            let container = try ModelContainer(for: MinecraftServer.self)
-            let context = ModelContext(container)
-            
-            logger.info("Context created")
-            
-            let servers = try context.fetch(FetchDescriptor<MinecraftServer>(sortBy: [.init(\.name)]))
-            
-            logger.info("\(servers.count) fetched")
-            
-            let entities = servers.map { MinecraftServerAppEntity(
-                id: $0.id,
-                name: $0.name,
-                hostname: $0.hostname,
-                port: $0.port
-            ) }
-            
-            return entities
-        } catch {
-            logger.error("\(error)")
-            throw error
-        }
+        let servers = try context.fetch(FetchDescriptor<MinecraftServer>(sortBy: [.init(\.name)]))
+        
+        let entities = servers.map { MinecraftServerAppEntity(
+            id: $0.id,
+            name: $0.name,
+            hostname: $0.hostname,
+            port: $0.port
+        ) }
+        
+        return entities
     }
 }
