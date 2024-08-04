@@ -59,7 +59,10 @@ struct MinecraftServerAppEntity: AppEntity, Identifiable {
     }
     
     var displayRepresentation: DisplayRepresentation {
-        DisplayRepresentation(title: "\(name)", subtitle: "\(hostname):\(port)")
+        DisplayRepresentation(
+            title: "\(name)",
+            subtitle: LocalizedStringResource(stringLiteral: "\(hostname):\(port)") // Initialised like this to remove separators from port
+        )
     }
 }
 
