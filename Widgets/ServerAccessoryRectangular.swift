@@ -22,14 +22,19 @@ struct ServerAccessoryRectangular: View {
         ZStack(alignment: .top) {
             HStack(alignment: .top) {
                 Text(server.name)
-                    .font(.headline)
+                    .foregroundStyle(.secondary)
+                    .font(.minecraftSubheadline)
+                    .scaledToFit()
+                    .minimumScaleFactor(0.01)
+                    .lineLimit(1)
                 
                 Spacer()
                 
                 if let players = status.players {
                     VStack(alignment: .trailing, spacing: 4) {
                         PlayerCount(players: players)
-                            .font(.headline)
+                            .contentTransition(.numericText())
+                            .font(.minecraftHeadline)
                     }
                 }
             }
@@ -44,25 +49,6 @@ struct ServerAccessoryRectangular: View {
                 }
             }
         }
-        
-//        VStack {
-//            HStack(alignment: .top) {
-//                Text(server.name)
-//                    .font(.headline)
-//                    .lineLimit(2)
-//                
-//                Spacer()
-//                
-//                if let players = status.players {
-//                    PlayerCount(players: players)
-//                        .font(.headline)
-//                }
-//            }
-//            
-//            Spacer()
-//            
-//            PlayerSkinList(skins: skins)
-//        }
     }
 }
 
@@ -71,7 +57,7 @@ struct ServerAccessoryRectangular: View {
     ServerAccessoryRectangularWidget()
 } timeline: {
     SimpleEntry(date: .now,
-                server: .mock,
+                server: .init(name: "Enigmatica", hostname: "example.com", port: 25565),
                 status: .mock,
                 skins: (0...4).map {
         _ in (.init(name: "Test", id: .init()), nil)

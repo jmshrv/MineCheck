@@ -31,6 +31,10 @@
 		1A1DE8FB2C2F883E0015D585 /* ServerListTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1DE8FA2C2F883E0015D585 /* ServerListTile.swift */; };
 		1A3817802C323BB60038142F /* View+if.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A38177F2C323BB60038142F /* View+if.swift */; };
 		1A3817822C3310DD0038142F /* ServerListTileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3817812C3310DD0038142F /* ServerListTileViewModel.swift */; };
+		1A7560D52C5FDB03007F9657 /* Minecraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7560D42C5FDB03007F9657 /* Minecraft.swift */; };
+		1A7560D62C5FDB03007F9657 /* Minecraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7560D42C5FDB03007F9657 /* Minecraft.swift */; };
+		1A78976D2C5BE06F00E9CFE4 /* Minecraft.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1A78976A2C5BE06C00E9CFE4 /* Minecraft.otf */; };
+		1A78976F2C5BE06F00E9CFE4 /* Minecraft.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1A78976A2C5BE06C00E9CFE4 /* Minecraft.otf */; };
 		1A7B2B382C31F90D00A40FA6 /* ModelContainer+previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B2B372C31F90D00A40FA6 /* ModelContainer+previews.swift */; };
 		1A7C37152C3702F800CB3285 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7C37142C3702F800CB3285 /* WidgetKit.framework */; };
 		1A7C37172C3702F800CB3285 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A7C37162C3702F800CB3285 /* SwiftUI.framework */; };
@@ -86,6 +90,8 @@
 		1A1DE8FA2C2F883E0015D585 /* ServerListTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTile.swift; sourceTree = "<group>"; };
 		1A38177F2C323BB60038142F /* View+if.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+if.swift"; sourceTree = "<group>"; };
 		1A3817812C3310DD0038142F /* ServerListTileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTileViewModel.swift; sourceTree = "<group>"; };
+		1A7560D42C5FDB03007F9657 /* Minecraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minecraft.swift; sourceTree = "<group>"; };
+		1A78976A2C5BE06C00E9CFE4 /* Minecraft.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Minecraft.otf; sourceTree = "<group>"; };
 		1A7B2B372C31F90D00A40FA6 /* ModelContainer+previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelContainer+previews.swift"; sourceTree = "<group>"; };
 		1A7C37122C3702F800CB3285 /* WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A7C37142C3702F800CB3285 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = /System/Library/Frameworks/WidgetKit.framework; sourceTree = "<absolute>"; };
@@ -124,6 +130,7 @@
 		1A1DE8CF2C2C98B30015D585 = {
 			isa = PBXGroup;
 			children = (
+				1A7897632C5BDF2600E9CFE4 /* Fonts */,
 				1A1DE8DA2C2C98B30015D585 /* MineCheck */,
 				1A7C37182C3702F800CB3285 /* Widgets */,
 				1A7C37132C3702F800CB3285 /* Frameworks */,
@@ -185,6 +192,15 @@
 				1A3817812C3310DD0038142F /* ServerListTileViewModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1A7897632C5BDF2600E9CFE4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1A78976A2C5BE06C00E9CFE4 /* Minecraft.otf */,
+				1A7560D42C5FDB03007F9657 /* Minecraft.swift */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		1A7B2B362C31F90000A40FA6 /* Extensions */ = {
@@ -310,6 +326,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A78976D2C5BE06F00E9CFE4 /* Minecraft.otf in Resources */,
 				1A1DE8E42C2C98B40015D585 /* Preview Assets.xcassets in Resources */,
 				1A1DE8E02C2C98B40015D585 /* Assets.xcassets in Resources */,
 			);
@@ -319,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A78976F2C5BE06F00E9CFE4 /* Minecraft.otf in Resources */,
 				1A0B21EC2C5B13F600C50775 /* Assets.xcassets in Resources */,
 				1A7C37202C3702F900CB3285 /* Assets.xcassets in Resources */,
 			);
@@ -341,6 +359,7 @@
 				1A7B2B382C31F90D00A40FA6 /* ModelContainer+previews.swift in Sources */,
 				1A1DE8F12C2EFBAB0015D585 /* AddServerToolbarItem.swift in Sources */,
 				1AD005D72C403D6C00923377 /* RefreshToolbarItem.swift in Sources */,
+				1A7560D52C5FDB03007F9657 /* Minecraft.swift in Sources */,
 				1A1DE8F62C2F006C0015D585 /* MinecraftServer.swift in Sources */,
 				1A0B21EA2C5B121A00C50775 /* PlayerSkin.swift in Sources */,
 				1A0B21E42C5AF48C00C50775 /* PlayerCount.swift in Sources */,
@@ -359,6 +378,7 @@
 				1A0B21E22C5AEE3D00C50775 /* ServerAccessoryRectangular.swift in Sources */,
 				1A7C371C2C3702F800CB3285 /* Widgets.swift in Sources */,
 				1A7C371E2C3702F800CB3285 /* AppIntent.swift in Sources */,
+				1A7560D62C5FDB03007F9657 /* Minecraft.swift in Sources */,
 				1A0B21E82C5B11F100C50775 /* PlayerSkinList.swift in Sources */,
 				1A0B21EB2C5B121A00C50775 /* PlayerSkin.swift in Sources */,
 				1A0B21E52C5AF48C00C50775 /* PlayerCount.swift in Sources */,
@@ -588,6 +608,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
+				INFOPLIST_KEY_LSApplicationCategoryType = "\"\"";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -626,6 +647,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Widgets;
+				INFOPLIST_KEY_LSApplicationCategoryType = "\"\"";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
