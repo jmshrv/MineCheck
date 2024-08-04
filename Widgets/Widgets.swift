@@ -90,7 +90,7 @@ struct ServerSystemTile: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: MinecraftServerAppIntent.self, provider: Provider()) { entry in
             ServerListTileContent(server: entry.server, status: entry.status, lastUpdate: entry.date, skins: entry.skins)
-                .containerBackground(.fill.tertiary, for: .widget)
+                .containerBackground(.fill, for: .widget)
                 .modelContainer(for: MinecraftServer.self)
         }
         .supportedFamilies([.systemMedium])
@@ -106,7 +106,7 @@ struct ServerAccessoryRectangularWidget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: MinecraftServerAppIntent.self, provider: Provider()) { entry in
             ServerAccessoryRectangular(server: entry.server, status: entry.status, lastUpdate: entry.date, skins: entry.skins)
-                .containerBackground(.fill.tertiary, for: .widget)
+                .containerBackground(.fill, for: .widget)
                 .modelContainer(for: MinecraftServer.self)
         }
         .supportedFamilies([.accessoryRectangular])
