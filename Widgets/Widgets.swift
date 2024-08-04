@@ -33,7 +33,12 @@ struct Provider: AppIntentTimelineProvider {
     }
 
     func snapshot(for configuration: MinecraftServerAppIntent, in context: Context) async -> MinecheckTimelineEntry {
-        await timeline(for: configuration, in: context).entries.first!
+//        Show a placeholder in previews, since the unconfigured widget shows an error
+        if context.isPreview {
+            return placeholder(in: context)
+        }
+        
+        return await timeline(for: configuration, in: context).entries.first ?? placeholder(in: context)
     }
     
     func timeline(for configuration: MinecraftServerAppIntent, in context: Context) async -> Timeline<MinecheckTimelineEntry> {
