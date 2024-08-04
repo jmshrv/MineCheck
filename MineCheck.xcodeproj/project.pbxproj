@@ -33,6 +33,9 @@
 		1A3817822C3310DD0038142F /* ServerListTileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3817812C3310DD0038142F /* ServerListTileViewModel.swift */; };
 		1A7560D52C5FDB03007F9657 /* Minecraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7560D42C5FDB03007F9657 /* Minecraft.swift */; };
 		1A7560D62C5FDB03007F9657 /* Minecraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7560D42C5FDB03007F9657 /* Minecraft.swift */; };
+		1A7560DB2C5FEC63007F9657 /* MinecheckTimelineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7560DA2C5FEC63007F9657 /* MinecheckTimelineEntry.swift */; };
+		1A7560DD2C5FF7BD007F9657 /* Timeline+Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7560DC2C5FF7BD007F9657 /* Timeline+Entry.swift */; };
+		1A7560DF2C601C75007F9657 /* ErrorWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7560DE2C601C75007F9657 /* ErrorWidgetView.swift */; };
 		1A78976D2C5BE06F00E9CFE4 /* Minecraft.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1A78976A2C5BE06C00E9CFE4 /* Minecraft.otf */; };
 		1A78976F2C5BE06F00E9CFE4 /* Minecraft.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1A78976A2C5BE06C00E9CFE4 /* Minecraft.otf */; };
 		1A7B2B382C31F90D00A40FA6 /* ModelContainer+previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7B2B372C31F90D00A40FA6 /* ModelContainer+previews.swift */; };
@@ -91,6 +94,9 @@
 		1A38177F2C323BB60038142F /* View+if.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+if.swift"; sourceTree = "<group>"; };
 		1A3817812C3310DD0038142F /* ServerListTileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListTileViewModel.swift; sourceTree = "<group>"; };
 		1A7560D42C5FDB03007F9657 /* Minecraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Minecraft.swift; sourceTree = "<group>"; };
+		1A7560DA2C5FEC63007F9657 /* MinecheckTimelineEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinecheckTimelineEntry.swift; sourceTree = "<group>"; };
+		1A7560DC2C5FF7BD007F9657 /* Timeline+Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timeline+Entry.swift"; sourceTree = "<group>"; };
+		1A7560DE2C601C75007F9657 /* ErrorWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorWidgetView.swift; sourceTree = "<group>"; };
 		1A78976A2C5BE06C00E9CFE4 /* Minecraft.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Minecraft.otf; sourceTree = "<group>"; };
 		1A7B2B372C31F90D00A40FA6 /* ModelContainer+previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelContainer+previews.swift"; sourceTree = "<group>"; };
 		1A7C37122C3702F800CB3285 /* WidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +231,7 @@
 		1A7C37182C3702F800CB3285 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				1A7560DA2C5FEC63007F9657 /* MinecheckTimelineEntry.swift */,
 				1A0B21E12C5AEE0400C50775 /* ServerAccessoryRectangular.swift */,
 				1A7C37192C3702F800CB3285 /* WidgetsBundle.swift */,
 				1A7C371B2C3702F800CB3285 /* Widgets.swift */,
@@ -232,6 +239,8 @@
 				1A7C371F2C3702F900CB3285 /* Assets.xcassets */,
 				1A7C37212C3702F900CB3285 /* Info.plist */,
 				1A7C37222C3702F900CB3285 /* Widgets.entitlements */,
+				1A7560DC2C5FF7BD007F9657 /* Timeline+Entry.swift */,
+				1A7560DE2C601C75007F9657 /* ErrorWidgetView.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -374,13 +383,16 @@
 				1A0699142C44332900AE7766 /* ModelContainer+previews.swift in Sources */,
 				1A0699102C4432B200AE7766 /* ServerListTile.swift in Sources */,
 				1AF566372C42FDD700E1B447 /* MinecraftServer.swift in Sources */,
+				1A7560DF2C601C75007F9657 /* ErrorWidgetView.swift in Sources */,
 				1A7C371A2C3702F800CB3285 /* WidgetsBundle.swift in Sources */,
 				1A0B21E22C5AEE3D00C50775 /* ServerAccessoryRectangular.swift in Sources */,
 				1A7C371C2C3702F800CB3285 /* Widgets.swift in Sources */,
 				1A7C371E2C3702F800CB3285 /* AppIntent.swift in Sources */,
+				1A7560DD2C5FF7BD007F9657 /* Timeline+Entry.swift in Sources */,
 				1A7560D62C5FDB03007F9657 /* Minecraft.swift in Sources */,
 				1A0B21E82C5B11F100C50775 /* PlayerSkinList.swift in Sources */,
 				1A0B21EB2C5B121A00C50775 /* PlayerSkin.swift in Sources */,
+				1A7560DB2C5FEC63007F9657 /* MinecheckTimelineEntry.swift in Sources */,
 				1A0B21E52C5AF48C00C50775 /* PlayerCount.swift in Sources */,
 				1A0699112C4432BF00AE7766 /* ServerListTileViewModel.swift in Sources */,
 			);

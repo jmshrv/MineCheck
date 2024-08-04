@@ -56,11 +56,14 @@ struct ServerAccessoryRectangular: View {
 #Preview(as: .accessoryRectangular) {
     ServerAccessoryRectangularWidget()
 } timeline: {
-    SimpleEntry(date: .now,
-                server: .init(name: "Enigmatica", hostname: "example.com", port: 25565),
-                status: .mock,
-                skins: (0...4).map {
-        _ in (.init(name: "Test", id: .init()), nil)
-    })
+    MinecheckTimelineEntry.success(
+        .init(
+            server: .init(name: "Enigmatica", hostname: "example.com", port: 25565),
+            status: .mock,
+            skins: (0...4).map {
+                _ in (.init(name: "Test", id: .init()), nil)
+            }
+        )
+    )
 }
 #endif

@@ -22,66 +22,55 @@ struct Provider: AppIntentTimelineProvider {
         }
       }()
     
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), server: .mock, status: .mock, skins: [])
+    func placeholder(in context: Context) -> MinecheckTimelineEntry {
+        .success(
+            .init(
+                server: .mock,
+                status: .mock,
+                skins: []
+            )
+        )
     }
 
-    func snapshot(for configuration: MinecraftServerAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), server: .mock, status: .mock, skins: [])
+    func snapshot(for configuration: MinecraftServerAppIntent, in context: Context) async -> MinecheckTimelineEntry {
+        await timeline(for: configuration, in: context).entries.first!
     }
     
-    func timeline(for configuration: MinecraftServerAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
+    func timeline(for configuration: MinecraftServerAppIntent, in context: Context) async -> Timeline<MinecheckTimelineEntry> {
         guard let server = configuration.server else {
-            return Timeline(
-                entries: [SimpleEntry(date: Date(), server: .mock, status: .mock, skins: [])],
-                policy: .after(
-                    .now.addingTimeInterval(
-                        15 * 60
-                    )
-                )
-            )
+            return .init(entry: .error(.init(error: .noServer)))
         }
         
         let connection = MinecraftConnection(hostname: server.hostname, port: server.port)
         
-        guard let status = try? await connection.ping() else {
-            return Timeline(
-                entries: [SimpleEntry(date: Date(), server: .mock, status: .mock, skins: [])],
-                policy: .after(
-                    .now.addingTimeInterval(
-                        15 * 60
-                    )
-                )
-            )
+        var status: MinecraftStatus
+        do {
+            status = try await connection.ping()
+        } catch {
+            return .init(entry: .error(.init(error: .pingFailed(error))))
         }
         
-        let skins = try? await status.players?.skins()
+        var skins: [(MinecraftPlayerSample, Data?)]?
+        do {
+            skins = try await status.players?.skins()
+        } catch {
+            return .init(entry: .error(.init(error: .skinsFailed(error))))
+        }
 
         return Timeline(
-            entries: [SimpleEntry(
-                date: .now,
-                server: .init(
-                    name: server.name,
-                    hostname: server.hostname,
-                    port: server.port
-                ),
-                status: status,
-                skins: skins ?? []
-            )],
-            policy: .after(
-                .now.addingTimeInterval(
-                    15 * 60
+            entry: .success(
+                .init(
+                    server: .init(
+                        name: server.name,
+                        hostname: server.hostname,
+                        port: server.port
+                    ),
+                    status: status,
+                    skins: skins ?? []
                 )
             )
         )
     }
-}
-
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let server: MinecraftServer
-    let status: MinecraftStatus
-    let skins: [(MinecraftPlayerSample, Data?)]
 }
 
 struct ServerSystemTile: Widget {
@@ -89,9 +78,21 @@ struct ServerSystemTile: Widget {
 
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: MinecraftServerAppIntent.self, provider: Provider()) { entry in
-            ServerListTileContent(server: entry.server, status: entry.status, lastUpdate: entry.date, skins: entry.skins)
-                .containerBackground(.fill, for: .widget)
-                .modelContainer(for: MinecraftServer.self)
+            Group {
+                switch entry {
+                case .success(let success):
+                    ServerListTileContent(
+                        server: success.server,
+                        status: success.status,
+                        lastUpdate: success.date,
+                        skins: success.skins
+                    )
+                case .error(let error):
+                    ErrorWidgetView(entry: error)
+                }
+            }
+            .containerBackground(.fill, for: .widget)
+            .modelContainer(for: MinecraftServer.self)
         }
         .supportedFamilies([.systemMedium])
     }
@@ -105,17 +106,22 @@ struct ServerAccessoryRectangularWidget: Widget {
 
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: kind, intent: MinecraftServerAppIntent.self, provider: Provider()) { entry in
-            ServerAccessoryRectangular(server: entry.server, status: entry.status, lastUpdate: entry.date, skins: entry.skins)
-                .containerBackground(.fill, for: .widget)
-                .modelContainer(for: MinecraftServer.self)
+            Group {
+                switch entry {
+                case .success(let success):
+                    ServerAccessoryRectangular(
+                        server: success.server,
+                        status: success.status,
+                        lastUpdate: success.date,
+                        skins: success.skins
+                    )
+                case .error(let error):
+                    ErrorWidgetView(entry: error)
+                }
+            }
+            .containerBackground(.fill, for: .widget)
+            .modelContainer(for: MinecraftServer.self)
         }
         .supportedFamilies([.accessoryRectangular])
     }
-}
-
-
-#Preview(as: .systemMedium) {
-    ServerSystemTile()
-} timeline: {
-    SimpleEntry(date: .now, server: .mock, status: .mock, skins: [])
 }
