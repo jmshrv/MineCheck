@@ -19,7 +19,7 @@ final class MinecraftServer: Identifiable, Sendable {
     var port: UInt16
     
     required init(id: UUID = UUID(), name: String, hostname: String, port: UInt16) {
-        self.id = UUID()
+        self.id = id
         self.name = name
         self.hostname = hostname
         self.port = port
