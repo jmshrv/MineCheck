@@ -67,8 +67,8 @@ struct ServerListTileContent: View {
                     .resizable()
                     .interpolation(.none)
                     .frame(width: 64, height: 64)
-                    .clipShape(.rect(cornerRadius: 8))
-                    .padding(.trailing, 10)
+                    .clipShape(.rect(cornerRadius: 12))
+                    .padding(.trailing, 12)
             }
             
             VStack(alignment: .leading) {
