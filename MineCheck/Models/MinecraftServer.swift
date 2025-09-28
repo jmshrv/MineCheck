@@ -11,7 +11,7 @@ import SwiftData
 import OSLog
 
 @Model
-final class MinecraftServer: Identifiable, Sendable {
+final class MinecraftServer: Identifiable {
     var id = UUID()
     
     var name: String
@@ -49,7 +49,7 @@ struct MinecraftServerAppEntity: AppEntity, Identifiable {
     let hostname: String
     let port: UInt16
     
-    static var defaultQuery = MinecraftServerEntityQuery()
+    static let defaultQuery = MinecraftServerEntityQuery()
     
     static var typeDisplayRepresentation: TypeDisplayRepresentation {
         TypeDisplayRepresentation(
