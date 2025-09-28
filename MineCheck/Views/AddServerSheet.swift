@@ -45,14 +45,14 @@ struct AddServerSheet: View {
             .navigationTitle("Add Server")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Add") {
+                    Button(role: .confirm) {
                         context.insert(server)
                         dismiss()
                     }
                     .disabled(!isValid)
                 }
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button(role: .cancel) {
                         dismiss()
                     }
                 }
